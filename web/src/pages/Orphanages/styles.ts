@@ -19,6 +19,10 @@ export const Container = styled.div`
     }
   }
 
+  .leaflet-container {
+    z-index: 5;
+  }
+
   > a {
     position: absolute;
     bottom: 40px;
@@ -32,6 +36,8 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    z-index: 10;
 
     transition: background-color 0.2s;
 
@@ -64,5 +70,3 @@ export const Sidebar = styled.aside`
     line-height: 28px;
   }
 `;
-
-export const Map = styled.aside``;
