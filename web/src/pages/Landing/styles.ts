@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
   max-width: 1100px;
 
   height: 100%;
-  max-height: 640px;
+  max-height: 560px;
 
   display: flex;
   flex-direction: column;
