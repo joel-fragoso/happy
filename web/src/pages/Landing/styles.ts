@@ -6,6 +6,10 @@ export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   background: linear-gradient(329.54deg, #29b6d1 0%, #00c7c7 100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Wrapper = styled.div`
@@ -15,14 +19,15 @@ export const Wrapper = styled.div`
   max-width: 1100px;
 
   height: 100%;
-  max-height: 680px;
+  max-height: 640px;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 
-  background: url(${landingImg}) no-repeat right center;
+  background: url(${landingImg}) no-repeat 80% center;
+  background-size: contain;
 
   > a {
     position: absolute;
