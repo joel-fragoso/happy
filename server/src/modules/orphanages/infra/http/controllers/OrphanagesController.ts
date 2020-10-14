@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import * as Yup from 'yup';
 
 import CreateOrphanage from '../../../services/CreateOrphanage';
 import ListOrphanagesService from '../../../services/ListOrphanagesService';
@@ -33,7 +34,7 @@ class OrphanagesController {
 
     const createOrphanage = new CreateOrphanage();
 
-    const orphanage = await createOrphanage.execute({
+    const data = {
       name,
       latitude,
       longitude,
@@ -42,7 +43,28 @@ class OrphanagesController {
       opening_hours,
       open_on_weekends: Boolean(open_on_weekends),
       images,
+    };
+
+    const schema = Yup.object().shape({
+      name: Yup.string().required(),
+      latitude: Yup.number().required(),
+      longitude: Yup.number().required(),
+      about: Yup.string().required().max(300),
+      instructions: Yup.string().required(),
+      opening_hours: Yup.string().required(),
+      open_on_weekends: Yup.boolean().required(),
+      images: Yup.array(
+        Yup.object().shape({
+          path: Yup.string().required(),
+        }),
+      ),
     });
+
+    await schema.validate(data, {
+      abortEarly: false,
+    });
+
+    const orphanage = await createOrphanage.execute(data);
 
     return response.status(201).json(orphanage);
   }
