@@ -1,9 +1,11 @@
 import express from 'express';
 import path from 'path';
 
-import routes from './routes';
+import 'express-async-errors';
 
 import '../typeorm';
+
+import routes from './routes';
 
 const app = express();
 
