@@ -1,6 +1,10 @@
 import Orphanage from '../infra/typeorm/entities/Orphanage';
 import OrphanagesRepository from '../infra/typeorm/repositories/OrphanagesRepository';
 
+interface IRequestImage {
+  path: string;
+}
+
 interface IRequest {
   name: string;
   latitude: number;
@@ -9,6 +13,7 @@ interface IRequest {
   instructions: string;
   opening_hours: string;
   open_on_weekends: boolean;
+  images: IRequestImage[];
 }
 
 class CreateOrphanage {
@@ -26,6 +31,7 @@ class CreateOrphanage {
     instructions,
     opening_hours,
     open_on_weekends,
+    images,
   }: IRequest): Promise<Orphanage> {
     const orphanage = await this.orphanagesRepository.create({
       name,
@@ -35,6 +41,7 @@ class CreateOrphanage {
       instructions,
       opening_hours,
       open_on_weekends,
+      images,
     });
 
     return orphanage;
