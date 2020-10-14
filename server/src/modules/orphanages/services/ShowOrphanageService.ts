@@ -12,8 +12,12 @@ class ShowOrphanageService {
     this.orphanagesRepository = new OrphanagesRepository();
   }
 
-  public async execute({ id }: IRequest): Promise<Orphanage | undefined> {
+  public async execute({ id }: IRequest): Promise<Orphanage> {
     const orphanage = await this.orphanagesRepository.findById(id);
+
+    if (!orphanage) {
+      throw new Error(`The orphanage id (${id}) does not exist.`);
+    }
 
     return orphanage;
   }

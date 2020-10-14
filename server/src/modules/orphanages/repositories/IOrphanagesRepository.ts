@@ -4,7 +4,7 @@ import Orphanage from '../infra/typeorm/entities/Orphanage';
 interface IOrphanagesRepository {
   findAll(): Promise<Orphanage[]>;
 
-  findById(id: number): Promise<Orphanage | undefined>;
+  findById(id: number): Promise<Orphanage>;
 
   findByName(name: string): Promise<Orphanage | undefined>;
 

@@ -1,3 +1,5 @@
+import ICreateImageDTO from './ICreateImageDTO';
+
 interface ICreateOrphanageDTO {
   name: string;
   latitude: number;
@@ -6,6 +8,7 @@ interface ICreateOrphanageDTO {
   instructions: string;
   opening_hours: string;
   open_on_weekends: boolean;
+  images: ICreateImageDTO[];
 }
 
 export default ICreateOrphanageDTO;

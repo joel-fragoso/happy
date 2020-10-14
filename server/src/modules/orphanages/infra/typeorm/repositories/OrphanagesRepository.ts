@@ -37,6 +37,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
     instructions,
     opening_hours,
     open_on_weekends,
+    images,
   }: ICreateOrphanageDTO): Promise<Orphanage> {
     const createOrphanage = this.ormRepository.create({
       name,
@@ -46,6 +47,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
       instructions,
       opening_hours,
       open_on_weekends,
+      images,
     });
 
     const orphanage = await this.ormRepository.save(createOrphanage);
