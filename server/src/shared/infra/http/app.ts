@@ -5,6 +5,8 @@ import 'express-async-errors';
 
 import '../typeorm';
 
+import errorHandler from '../../errors/errorHandler';
+
 import routes from './routes';
 
 const app = express();
@@ -19,5 +21,7 @@ app.use(
     path.join(__dirname, '..', '..', '..', '..', 'tmp', 'uploads'),
   ),
 );
+
+app.use(errorHandler);
 
 export default app;
