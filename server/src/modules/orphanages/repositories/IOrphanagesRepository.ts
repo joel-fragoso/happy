@@ -2,6 +2,8 @@ import ICreateOrphanageDTO from '../dtos/ICreateOrphanageDTO';
 import Orphanage from '../infra/typeorm/entities/Orphanage';
 
 interface IOrphanagesRepository {
+  findAll(): Promise<Orphanage[]>;
+
   findById(id: number): Promise<Orphanage | undefined>;
 
   findByName(name: string): Promise<Orphanage | undefined>;
