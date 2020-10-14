@@ -30,6 +30,7 @@
         "ts": "never"
       }
     ],
+    "no-console": "off",
     "prettier/prettier": "error",
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
