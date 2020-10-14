@@ -1,3 +1,4 @@
+import AppError from '../../../shared/errors/AppError';
 import Orphanage from '../infra/typeorm/entities/Orphanage';
 import OrphanagesRepository from '../infra/typeorm/repositories/OrphanagesRepository';
 
@@ -16,7 +17,7 @@ class ShowOrphanageService {
     const orphanage = await this.orphanagesRepository.findById(id);
 
     if (!orphanage) {
-      throw new Error(`The orphanage id (${id}) does not exist.`);
+      throw new AppError(`The orphanage id (${id}) does not exist.`);
     }
 
     return orphanage;

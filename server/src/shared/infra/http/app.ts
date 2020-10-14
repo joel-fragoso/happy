@@ -5,7 +5,7 @@ import 'express-async-errors';
 
 import '../typeorm';
 
-import errorHandler from '../../errors/errorHandler';
+import errorHandler from '../../errors';
 
 import routes from './routes';
 
