@@ -10,4 +10,6 @@ orphanagesRouter.get('/', orphanagesController.index);
 
 orphanagesRouter.post('/', orphanagesController.create);
 
+orphanagesRouter.get('/:id', orphanagesController.show);
+
 export default orphanagesRouter;
