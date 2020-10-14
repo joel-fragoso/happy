@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 
 import CreateOrphanage from '../../../services/CreateOrphanage';
 import ListOrphanagesService from '../../../services/ListOrphanagesService';
+import ShowOrphanageService from '../../../services/ShowOrphanageService';
 
 class OrphanagesController {
   public async index(request: Request, response: Response): Promise<Response> {
@@ -36,6 +37,16 @@ class OrphanagesController {
     });
 
     return response.status(201).json(orphanage);
+  }
+
+  public async show(request: Request, response: Response): Promise<Response> {
+    const id = Number(request.params.id);
+
+    const showOrphanage = new ShowOrphanageService();
+
+    const orphanage = await showOrphanage.execute({ id });
+
+    return response.status(200).json(orphanage);
   }
 }
 
