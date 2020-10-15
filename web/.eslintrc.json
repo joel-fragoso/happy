@@ -41,7 +41,9 @@
         "tsx": "never"
       }
     ],
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "camelcase": "off",
+    "react/jsx-one-expression-per-line": "off"
   },
   "settings": {
     "import/resolver": {
