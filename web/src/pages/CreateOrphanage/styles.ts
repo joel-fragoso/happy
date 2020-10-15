@@ -7,6 +7,12 @@ export const Container = styled.div`
 export const Content = styled.main`
   flex: 1;
 
+  .leaflet-container {
+    margin-bottom: 40px;
+    border: 1px solid #d3e2e5;
+    border-radius: 20px;
+  }
+
   form.create-orphanage-form {
     width: 700px;
     margin: 64px auto;
@@ -82,13 +88,33 @@ export const Content = styled.main`
     line-height: 28px;
   }
 
-  form.create-orphanage-form .input-block .new-image {
+  form.create-orphanage-form .input-block input[type='file'] {
+    display: none;
+  }
+
+  form.create-orphanage-form .input-block .images-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 16px;
+  }
+
+  form.create-orphanage-form .input-block .images-container > img {
     width: 100%;
-    height: 64px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+
+  form.create-orphanage-form .input-block .images-container .new-image {
+    height: 96px;
     background: #f5f8fa;
     border: 1px dashed #96d2f0;
     border-radius: 20px;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   form.create-orphanage-form .input-block .button-select {
