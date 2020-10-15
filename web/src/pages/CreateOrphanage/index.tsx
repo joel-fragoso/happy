@@ -1,4 +1,10 @@
-import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { LeafletMouseEvent } from 'leaflet';
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { FiPlus } from 'react-icons/fi';
@@ -12,6 +18,10 @@ import { Container, Content } from './styles';
 
 const CreateOrphanage: React.FC = () => {
   const history = useHistory();
+  const [location, setLocation] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
   const [position, setPosition] = useState({
     latitude: 0,
     longitude: 0,
@@ -32,6 +42,19 @@ const CreateOrphanage: React.FC = () => {
       latitude: lat,
       longitude: lng,
     });
+  }, []);
+
+  useEffect(() => {
+    if ('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition(local => {
+        const { latitude, longitude } = local.coords;
+
+        setLocation({
+          latitude,
+          longitude,
+        });
+      });
+    }
   }, []);
 
   const handleSelectImages = useCallback(
@@ -97,7 +120,7 @@ const CreateOrphanage: React.FC = () => {
             <legend>Dados</legend>
 
             <Map
-              center={[-22.4350155, -46.5767702]}
+              center={[location.latitude, location.longitude]}
               style={{ width: '100%', height: 280 }}
               zoom={15}
               onclick={handleMapClick}
