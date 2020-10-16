@@ -9,7 +9,7 @@ export default {
   render(image: Image): IImagesView {
     return {
       id: image.id,
-      url: `http://localhost:3333/uploads/${image.path}`,
+      url: `http://192.168.1.26:3333/uploads/${image.path}`,
     };
   },
   renderMany(images: Image[]): IImagesView[] {
