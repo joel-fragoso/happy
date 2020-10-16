@@ -3,7 +3,7 @@ import { View, StyleSheet, Dimensions, Text } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { RectButton } from 'react-native-gesture-handler';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 import mapMarkerImg from '../../../assets/images/map-marker.png';
 
@@ -17,17 +17,18 @@ const SelectMapPosition: React.FC = () => {
   return (
     <View style={styles.container}>
       <MapView
+        style={styles.mapStyle}
+        provider={PROVIDER_GOOGLE}
         initialRegion={{
-          latitude: -27.2092052,
-          longitude: -49.6401092,
+          latitude: -22.2855168,
+          longitude: -46.3765504,
           latitudeDelta: 0.008,
           longitudeDelta: 0.008,
         }}
-        style={styles.mapStyle}
       >
         <Marker
           icon={mapMarkerImg}
-          coordinate={{ latitude: -27.2092052, longitude: -49.6401092 }}
+          coordinate={{ latitude: -22.2855168, longitude: -46.3765504 }}
         />
       </MapView>
 
